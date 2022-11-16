@@ -5,23 +5,25 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.TreeMap;
+import java.util.List;
 
 import server.*;
 
 public class Server {
-	TreeMap<String, User> users;
+	// I reckon TreeMaps would be more efficient if we made the right comparators. Lists will do for now.
+	List<User> users; 
+	List<ChatRoom> chatRooms;
 	
 	public static void main(String[] args) {
-		int numClients = 0;
-		
 		ServerSocket server = null;
+		int numClients = 0;
 		try {
 			server = new ServerSocket(4242);
 			server.setReuseAddress(true);
 			while(true) {
 				Socket client = server.accept();
-				ClientHandler clientHandler = new ClientHandler(client);
+				numClients++;
+				ClientHandler clientHandler = new ClientHandler(client, numClients);
 				new Thread(clientHandler).start();
 			}
 		}
@@ -52,9 +54,11 @@ public class Server {
 		private final Socket client;
 		ObjectInputStream objectInputStream;
 		ObjectOutputStream objectOutputStream;
+		int clientID; // clientID is mostly here for if it ever makes debugging easier
 		
-		public ClientHandler(Socket client) {
+		public ClientHandler(Socket client, int clientID) {
 			this.client = client;
+			this.clientID = clientID;
 		}
 		
 		@Override
