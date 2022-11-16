@@ -11,8 +11,8 @@ import server.*;
 
 public class Server {
 	// I reckon TreeMaps would be more efficient if we made the right comparators. Lists will do for now.
-	List<User> users; 
-	List<ChatRoom> chatRooms;
+	private static List<User> users; 
+	private static List<ChatRoom> chatRooms;
 	
 	public static void main(String[] args) {
 		ServerSocket server = null;

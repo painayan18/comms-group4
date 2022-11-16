@@ -1,16 +1,15 @@
 import java.io.*; // streams
 import java.net.*; // sockets
-import java.util.Scanner;
 
 import clientGUI.GUI;
 
 public class Client {
+	private static Socket server = null;
+	private static ObjectInputStream objectInputStream;
+	private static ObjectOutputStream objectOutputStream;
+	private static GUI gui;
 	
 	public static void main(String[] args) {
-		Socket server = null;
-		ObjectInputStream objectInputStream;
-		ObjectOutputStream objectOutputStream;
-		
 		try {
 			server = new Socket("127.0.0.1", 4242);
 			
@@ -37,5 +36,9 @@ public class Client {
 				}
 			}
 		}
+	}
+	
+	private static void chatMessageNotification() {
+		
 	}
 }
