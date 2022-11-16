@@ -1,5 +1,5 @@
 package requestResponse;
 
-public class LoginResponse {
+public class LoginMessage {
 
 }

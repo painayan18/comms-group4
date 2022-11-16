@@ -5,10 +5,13 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.TreeMap;
 
 import server.*;
 
 public class Server {
+	TreeMap<String, User> users;
+	
 	public static void main(String[] args) {
 		int numClients = 0;
 		
@@ -35,6 +38,14 @@ public class Server {
 				}
 			}
 		}
+	}
+	
+	private static void load() {
+		
+	}
+	
+	private static void save() {
+		
 	}
 	
 	private static class ClientHandler implements Runnable {
@@ -71,4 +82,6 @@ public class Server {
 				}
 			}
 		}
+	}
+	
 }
