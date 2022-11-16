@@ -26,7 +26,7 @@ public class GUI implements Runnable {
 	UserListView ulv;
 	LoginView lv;
 	
-	GUI(UserData currentUser, ObjectOutputStream objectOutputStream) {
+	GUI(ObjectOutputStream objectOutputStream) {
 		
 	}
 
