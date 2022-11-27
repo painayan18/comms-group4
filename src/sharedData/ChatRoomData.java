@@ -1,25 +1,25 @@
 package sharedData;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ChatRoomData {
-	List<UserData> users;
-	List<ChatMessage> messages;
+	ArrayList<UserData> users;
+	ArrayList<ChatMessage> messages;
 	int id;
 	
-	public ChatRoomData(List<UserData> users, List<ChatMessage> messages, int id) {
+	public ChatRoomData(ArrayList<UserData> users, ArrayList<ChatMessage> messages, int id) {
 		this.users = users;
 		this.messages = messages;
 		this.id = id;
 	}
 
-	public List<UserData> getUsers() {
+	public ArrayList<UserData> getUsers() {
 		return users;
 	}
 
-	public List<ChatMessage> getMessages() {
+	public ArrayList<ChatMessage> getMessages() {
 		return messages;
 	}
 

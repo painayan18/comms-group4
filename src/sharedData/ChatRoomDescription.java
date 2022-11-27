@@ -1,11 +1,11 @@
 package sharedData;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ChatRoomDescription {
-	List<UserData> users;
+	ArrayList<UserData> users;
 	ChatMessage mostRecentMessage;
 	int id;
 	
@@ -15,13 +15,13 @@ public class ChatRoomDescription {
 		this.id = -1;
 	}
 	
-	public ChatRoomDescription(List<UserData> users, ChatMessage mostRecentMessage, int id) {
+	public ChatRoomDescription(ArrayList<UserData> users, ChatMessage mostRecentMessage, int id) {
 		this.users = users;
 		this.mostRecentMessage = mostRecentMessage;
 		this.id = id;
 	}
 
-	public List<UserData> getUsers() {
+	public ArrayList<UserData> getUsers() {
 		return users;
 	}
 
