@@ -27,7 +27,7 @@ public class LoginView {
             lblError.setStyle("-fx-text-fill: red");
         }else {
             ChatRoomView.userName = txtUsername.getText();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("clientGUI/View/Client.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("clientGUI/clientGUI.View/Client.fxml"));
             Parent load = loader.load();
             clientGUI.ChatRoomView controller=loader.<clientGUI.ChatRoomView>getController();
             controller.setData(txtUsername.getText());

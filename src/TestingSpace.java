@@ -1,11 +1,7 @@
-import clientGUI.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import requestResponse.*;
-import server.*;
-import sharedData.*;
 
 import java.util.Objects;
 
@@ -19,7 +15,7 @@ public class TestingSpace extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("View/Login.fxml")))));
+		primaryStage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/clientGUI/View/Login.fxml")))));
 		primaryStage.setTitle("Live Chat");
 		primaryStage.show();
 	}
