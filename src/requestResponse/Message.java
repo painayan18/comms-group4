@@ -1,7 +1,7 @@
 package requestResponse;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 import sharedData.*;
 
@@ -9,7 +9,7 @@ public class Message implements Serializable {
 	public static enum Type {CR_DESC, CR_DATA, U_DATA, CM, EMPTY};
 	private Type type;
 	
-	private List<String> objectsAsString;
+	private ArrayList<String> objectsAsString;
 	
 	Message() {
 		type = Type.EMPTY;
@@ -23,7 +23,7 @@ public class Message implements Serializable {
 		return type;
 	}
 	
-	public void setCRDS(List<ChatRoomDescription> crds) {
+	public void setCRDS(ArrayList<ChatRoomDescription> crds) {
 		objectsAsString.clear();
 		for(ChatRoomDescription crd : crds) {
 			objectsAsString.add(crd.toString());
@@ -31,9 +31,9 @@ public class Message implements Serializable {
 		setType(Type.CR_DESC);
 	}
 	
-	public List<ChatRoomDescription> getCRDS() throws Exception {
+	public ArrayList<ChatRoomDescription> getCRDS() throws Exception {
 		if(this.type != Type.CR_DESC) throw new Exception("Wrong type of get called for current message type!");
-		List<ChatRoomDescription> crds;
+		ArrayList<ChatRoomDescription> crds = new ArrayList<ChatRoomDescription>();
 		for(String str : objectsAsString ) {
 			crds.add(new ChatRoomDescription(str));
 		}
@@ -41,26 +41,41 @@ public class Message implements Serializable {
 	}
 	
 	public void setCRD(ChatRoomData crd) {
-		this.crd = crd;
+		objectsAsString.clear();
+		objectsAsString.add(crd.toString());
+		setType(Type.CR_DATA);
 	}
 	
-	public ChatRoomData getCRD() {
-		return crd;
+	public ChatRoomData getCRD() throws Exception {
+		if(this.type != Type.CR_DATA) throw new Exception("Wrong type of get called for current message type!");
+		return new ChatRoomData(objectsAsString.get(0));
 	}
 	
-	public void setUserList(List<UserData> userList) {
-		this.userList = userList;
+	public void setUserList(ArrayList<UserData> userList) {
+		objectsAsString.clear();
+		for (UserData user : userList) {
+			objectsAsString.add(user.toString());
+		}
+		setType(Type.U_DATA);
 	}
 	
-	public List<UserData> getUserList() {
+	public ArrayList<UserData> getUserList() throws Exception {
+		if(this.type != Type.U_DATA) throw new Exception("Wrong type of get called for current message type!");
+		ArrayList<UserData> userList = new ArrayList<UserData>();
+		for(String str : objectsAsString ) {
+			userList.add(new UserData(str));
+		}
 		return userList;
 	}
 	
 	public void setChatMessage(ChatMessage chatMessage) {
-		this.chatMessage = chatMessage;
+		objectsAsString.clear();
+		objectsAsString.add(chatMessage.toString());
+		setType(Type.CM);
 	}
 	
-	public ChatMessage getChatMessage() {
-		return chatMessage;
+	public ChatMessage getChatMessage() throws Exception {
+		if(this.type != Type.CM) throw new Exception("Wrong type of get called for current message type!");
+		return new ChatMessage(objectsAsString.get(0));
 	}
 }
