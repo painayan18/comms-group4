@@ -74,7 +74,7 @@ public class Server {
 				objectInputStream = new ObjectInputStream(inputStream);
 				//example: Message message = (Message) objectInputStream.readObject(); // note: blocking
 				
-			} catch (IOException | ClassNotFoundException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			finally {
