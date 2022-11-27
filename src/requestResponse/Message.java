@@ -16,7 +16,7 @@ public class Message implements Serializable {
 		objectsAsString = new ArrayList<String>();
 	}
 	
-	private void setType(Type type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 	

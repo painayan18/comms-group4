@@ -6,9 +6,9 @@ import sharedData.*;
 import requestResponse.*;
 
 public class GUI implements Runnable {
-	ObjectOutputStream objectOutputStream;
-	UserData currentUser;
-	enum State {LV, CRLV, CRV, ULV, SCRLV, ITCRLV, ITCRV};
+	private ObjectOutputStream objectOutputStream;
+	private UserData currentUser;
+	public static enum State {LV, CRLV, CRV, ULV, SCRLV, ITCRLV, ITCRV, CLOSED};
 	/*
 	 * LV		login view 
 	 * CRLV		chat room list view
@@ -18,16 +18,24 @@ public class GUI implements Runnable {
 	 * 
 	 * ITCRLV	IT chat room list view
 	 * ITCRV	IT chat room view
+	 * 
+	 * CLOSED --> should be used to stop Client from going on. Could also be default before running. 
 	 */
-	State state;
+	private State state;
 	
-	ChatRoomListView crlv;
-	ChatRoomView crv;
-	UserListView ulv;
-	LoginView lv;
+	private ChatRoomListView crlv;
+	private ChatRoomView crv;
+	private UserListView ulv;
+	private LoginView lv;
 	
 	GUI(ObjectOutputStream objectOutputStream) {
+		this.objectOutputStream = objectOutputStream;
+		crlv = null;
+		crv = null;
+		ulv = null;
+		lv = null;
 		
+		state = State.CLOSED;
 	}
 
 	@Override

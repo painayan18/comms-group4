@@ -4,6 +4,7 @@ import java.net.*; // sockets
 import clientGUI.GUI;
 
 public class Client {
+	
 	private static Socket server = null;
 	private static ObjectInputStream objectInputStream;
 	private static ObjectOutputStream objectOutputStream;
@@ -22,6 +23,7 @@ public class Client {
 			InputStream inputStream = server.getInputStream();
 			objectInputStream = new ObjectInputStream(inputStream);
 			//example: Message message = (Message) objectInputStream.readObject(); // note: blocking
+			
 			
 			
 		} catch (IOException e) {
