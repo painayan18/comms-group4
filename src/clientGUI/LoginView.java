@@ -90,6 +90,10 @@ public class LoginView {
 		
 	}
 	
+	public GUI.State getState() {
+		return this.state;
+	}
+	
 	public void show() {
 		frame.setEnabled(true);
 		frame.setVisible(true);

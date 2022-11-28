@@ -30,6 +30,8 @@ public class GUI implements Runnable {
 	
 	GUI(ObjectOutputStream objectOutputStream) {
 		this.objectOutputStream = objectOutputStream;
+		currentUser = null;
+		
 		crlv = null;
 		crv = null;
 		ulv = null;
@@ -40,8 +42,7 @@ public class GUI implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		doLoginView();
 	}
 	
 	public void update(Message message) {
@@ -49,7 +50,8 @@ public class GUI implements Runnable {
 	}
 	
 	public void loginUpdate(LoginMessage loginMessage) {
-		
+		currentUser = loginMessage.getUserData();
+		if(currentUser != null) lv.close();
 	}
 	
 	private void doChatRoomListView() {
@@ -61,10 +63,28 @@ public class GUI implements Runnable {
 	}
 	
 	private void doUserListView() {
-		
+		state = State.ULV;
 	}
 	
 	private void doLoginView() {
+		state = State.LV;
+		lv = new LoginView();
+		lv.show();
 		
+		try {
+			wait();
+			// wait for loginUpdate to be called
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		if (lv.getState() == State.CLOSED) {
+			lv = null;
+			state = State.CLOSED;
+		}
+		else {
+			lv = null;
+			doChatRoomListView();
+		}
 	}
 }

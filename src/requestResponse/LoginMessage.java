@@ -25,9 +25,14 @@ public class LoginMessage implements Serializable {
 		return password;
 	}
 
-	public UserData getUserData() throws Exception {
+	public UserData getUserData() {
 		if (userDataAsString == null) return null;
-		return new UserData(userDataAsString);
+		try {
+			return new UserData(userDataAsString);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void setUserData(UserData userData) {
