@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginContext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientGUI.LoginView">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="875.0" styleClass="gray-background" stylesheets="@../Style/styles.css">
+         <top>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="399.0" layoutY="164.0" size="150" />
+               </children></Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="200.0" prefWidth="875.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="228.0" layoutY="27.0" onAction="#loginOnAction" prefHeight="44.0" prefWidth="419.0" style="-fx-background-color: #10ac84;" stylesheets="@../Style/styles.css" text="LOGIN">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </Pane>
+         </bottom>
+         <left>
+            <Pane prefHeight="196.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </right>
+         <center>
+            <Pane prefHeight="94.0" prefWidth="475.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXTextField fx:id="txtUsername" focusColor="WHITE" layoutX="30.0" layoutY="34.0" prefHeight="43.0" prefWidth="417.0" promptText="User Name" unFocusColor="WHITE" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="419.0" layoutY="67.0" size="25" text="" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="34.0" top="16.0" />
+               </padding>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
