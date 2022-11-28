@@ -24,6 +24,10 @@ public class ChatRoomDescription {
 	public ArrayList<UserData> getUsers() {
 		return users;
 	}
+	
+	public void addUser(UserData user) {
+		users.add(user);
+	}
 
 	public ChatMessage getMostRecentMessage() {
 		return mostRecentMessage;

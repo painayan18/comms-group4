@@ -60,7 +60,7 @@ public class Message implements Serializable {
 		setType(Type.U_DATA);
 	}
 	
-	public ArrayList<UserData> getUserList() throws Exception {
+	public ArrayList<UserData> getUserData() throws Exception {
 		if(this.type != Type.U_DATA) throw new Exception("Wrong type of get called for current message type!");
 		ArrayList<UserData> userList = new ArrayList<UserData>();
 		for(String str : objectsAsString ) {
